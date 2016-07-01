@@ -1,5 +1,7 @@
 rssmailer.util.startup = rssmailer.util.startup || {};
 
-rssmailer.util.startup.loadViews=function(){
-    $("#mainview").load("/webclient/view/mainview.html");
+/*
+loadViews=function(){
+    $("#mainview").load("/view/mainview.html");
 }
+*/
