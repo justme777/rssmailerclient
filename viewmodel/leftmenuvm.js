@@ -1,5 +1,5 @@
 rssmailer.vm.leftmenu = rssmailer.vm.leftmenu || {};
 
-rssmailer.vm.leftmenu.onRegistrationItemClick = function(){
+rssmailer.vm.leftmenu.showRegistrationView = function(){
     $("#mainview").load("/view/registrationview.html");
 }
