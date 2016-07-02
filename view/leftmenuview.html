@@ -8,7 +8,7 @@
                     <a href="#">Dashboard</a>
                 </li>
                 <li>
-                    <a href="/registration.html">Регистрация</a>
+                    <span data-bind="click: onRegistrationItemClick">Регистрация</span>
                 </li>
                 <li>
                     <a href="#">Виджеты</a>
@@ -27,5 +27,7 @@
     </li>
 </ul>
 <script src="/viewmodel/leftmenuvm.js">
+</script>
+<script>
     ko.applyBindings(rssmailer.vm.leftmenu, document.getElementById("leftmenu"));
 </script>
