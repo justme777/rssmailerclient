@@ -1,0 +1,24 @@
+list of widgets
+
+<table id="tblWidgets" class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Rss</th>    
+        </tr>    
+    </thead>
+    <tbody data-bind="foreach: widgets">
+        <tr>
+            <td data-bind="text: id"></td>
+            <td data-bind="text: rss"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="/viewmodel/widgetvm.js">
+</script>
+<script>
+    ko.applyBindings(rssmailer.vm.widget, document.getElementById("tblWidgets"));
+    rssmailer.vm.widget.loadWidgets();
+</script>
+

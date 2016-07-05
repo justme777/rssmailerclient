@@ -1,6 +1,9 @@
 rssmailer.vm.widget = rssmailer.vm.widget||{};
 var model = rssmailer.vm.widget;
 
+model.widgets = ko.observableArray();
+
+
 model.createWidget = function(){
     var r = document.getElementById("txtRssLink").value;
     var u = 1;
@@ -9,27 +12,32 @@ model.createWidget = function(){
     
      $.ajax({
         type: "POST",
-        url: "http://rssmailer:8181/rest.php?name=createWidget",
+        url: "http://rssmailer/rest.php?name=createWidget",
         data: { rss:r, userId:u},
         dataType: 'html',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
-            alert(result);
+            console.log("ura!");
         }
      });    
-    /*
-     $.ajax({
+}
+
+model.loadWidgets = function(){
+    var postData = { 'userId': 1 };
+    $.ajax({
         type: "POST",
-        contentType: "application/json",
-        url: "http://rssmailer:8181/rest.php?name=createWidget",
-        data: JSON.stringify(postData),
-        dataType: "json",
+        url: "http://rssmailer/rest.php?name=getWidgets",
+        data: postData,
+      dataType: "json",
         success: function (res) {
-            alert(res);
-        }
+            model.widgets(res);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
     });
-    */
+    
 }
 
