@@ -1,16 +1,18 @@
-list of widgets
+
 
 <table id="tblWidgets" class="table">
     <thead>
         <tr>
             <th>#</th>
-            <th>Rss</th>    
+            <th>RSS</th>    
+            <th>GUID</th>    
         </tr>    
     </thead>
     <tbody data-bind="foreach: widgets">
         <tr>
             <td data-bind="text: id"></td>
             <td data-bind="text: rss"></td>
+            <td data-bind="text: guid"></td>
         </tr>
     </tbody>
 </table>
@@ -20,5 +22,29 @@ list of widgets
 <script>
     ko.applyBindings(rssmailer.vm.widget, document.getElementById("tblWidgets"));
     rssmailer.vm.widget.loadWidgets();
+    $("#myModal").modal();
 </script>
 
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
