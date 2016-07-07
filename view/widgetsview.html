@@ -1,5 +1,6 @@
 
-
+<div id="divWidgets">
+    <span data-bind="click: showWidget">Click</span>
 <table id="tblWidgets" class="table">
     <thead>
         <tr>
@@ -11,22 +12,13 @@
     <tbody data-bind="foreach: widgets">
         <tr>
             <td data-bind="text: id"></td>
-            <td data-bind="text: rss"></td>
+            <td data-bind="text: rss, click: $parent.showWidget"></td>
             <td data-bind="text: guid"></td>
         </tr>
     </tbody>
 </table>
-
-<script src="/viewmodel/widgetvm.js">
-</script>
-<script>
-    ko.applyBindings(rssmailer.vm.widget, document.getElementById("tblWidgets"));
-    rssmailer.vm.widget.loadWidgets();
-    $("#myModal").modal();
-</script>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+<!-- Modal -->
+  <div class="modal fade" id="widgetModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -36,9 +28,12 @@
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body">
-          <code>
-                widget's html code
-          </code>
+            
+          <textarea style="border:0px;width:100%;overflow:hidden;heigth:auto;">
+                <div id='rssmailer-container' data-widget='180649'></div>
+                <script src='http://rssmailerweb/js/widget_loader.js' async></script>
+          </textarea>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -47,3 +42,12 @@
       
     </div>
   </div>
+  </div>
+<script src="/viewmodel/widgetvm.js">
+</script>
+<script>
+    ko.applyBindings(rssmailer.vm.widget, document.getElementById("divWidgets"));
+    rssmailer.vm.widget.loadWidgets();
+</script>
+
+  

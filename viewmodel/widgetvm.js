@@ -3,7 +3,6 @@ var model = rssmailer.vm.widget;
 
 model.widgets = ko.observableArray();
 
-
 model.createWidget = function(){
     var r = document.getElementById("txtRssLink").value;
     var u = 1;
@@ -39,5 +38,9 @@ model.loadWidgets = function(){
         },
     });
     
+}
+
+model.showWidget = function(){
+    $("#widgetModal").modal();
 }
 
