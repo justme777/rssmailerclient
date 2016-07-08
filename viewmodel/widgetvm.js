@@ -5,7 +5,7 @@ model.widgets = ko.observableArray();
 
 model.createWidget = function(){
     var r = document.getElementById("txtRssLink").value;
-    var u = 1;
+    var u = getCookie('userId') ;
     var postData = { 'rss': r, 'userId': u };
     
     
@@ -24,7 +24,7 @@ model.createWidget = function(){
 }
 
 model.loadWidgets = function(){
-    var postData = { 'userId': 1 };
+    var postData = { 'userId': getCookie('userId') };
     $.ajax({
         type: "POST",
         url: "http://rssmailer/rest.php?name=getWidgets",
