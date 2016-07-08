@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-type: text/plain; charset=utf-8');
 ?>
+<link rel="Stylesheet" href="http://rssmailerweb/css/widget.css" />
 <div class="form">
         <input type="text" id="email" class="email" placeholder="Введите email" />
         <br />
