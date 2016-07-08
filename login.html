@@ -4,6 +4,7 @@
     <title>Вход</title>
     <script src="/js/jquery.js"></script>
     <script src="/utils/startup.js"></script>
+    <script src="/js/common.js"></script>
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet'>
 
@@ -20,8 +21,8 @@
         <form id="loginform">
             <fieldset>
                 <p>
-                    <label for="login-username">имя пользователя</label>
-                    <input id="username" type="text" class="round full-width-input" />
+                    <label for="login-username">Электронная почта</label>
+                    <input id="email" type="text" class="round full-width-input" />
                 </p>
 
                 <p>
@@ -29,10 +30,10 @@
                     <input id="password" class="round full-width-input" type="password" />
                 </p>
 
-                <!-- <p>I've <a href="#">forgotten my password</a>.</p> -->
+                <p>Я <a href="#">забыл пароль</a>.</p> 
 
                 <input type="button" ID="btnEnter" value="ВХОД" class="button round blue image-right ic-right-arrow" onclick="rssmailer.util.startup.login()" />
-
+                или <a  href="/registration.html">Зарегистрируйтесь</a>        
             </fieldset>
 
             <br />

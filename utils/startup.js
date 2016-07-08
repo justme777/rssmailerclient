@@ -18,12 +18,31 @@ model.loadViews=function(){
 }
 
 model.login = function(){
-    var username = document.getElementById("username").value;
+    var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
-    var postData = { 'username': username, 'password': password };
+    var postData = { 'email': email, 'password': password };
 
-
-
+    $.ajax({
+        type: "POST",
+        url: "http://rssmailer/rest.php?name=getUser",
+        data: postData,
+        dataType: "json",
+        success: function (res) {
+            if(res['id']){
+                setCookie('email',res['email'], 7);
+                setCookie('password',res['password'], 7);
+                setCookie('userId',res['id'], 7);
+                setCookie('reg_date',res['reg_date'], 7);
+                window.location = 'index.html';
+            }else{
+                alert('error');
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+    });
+/*
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -34,11 +53,12 @@ model.login = function(){
             alert(res);
             localStorage.setItem("token", res);
             if (res == 401) {
-
+                
             }
             else {
                 window.location = "index.html";
             }
         }
     });
+    */
 }
