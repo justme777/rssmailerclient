@@ -11,7 +11,7 @@ model.createWidget = function(){
     
      $.ajax({
         type: "POST",
-        url: "http://rssmailer/rest.php?name=createWidget",
+        url: localStorage.getItem('services_url')+"?name=createWidget",
         data: { rss:r, userId:u},
         dataType: 'html',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -27,7 +27,7 @@ model.loadWidgets = function(){
     var postData = { 'userId': getCookie('userId') };
     $.ajax({
         type: "POST",
-        url: "http://rssmailer/rest.php?name=getWidgets",
+        url: localStorage.getItem('services_url')+"?name=getWidgets",
         data: postData,
       dataType: "json",
         success: function (res) {

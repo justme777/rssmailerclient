@@ -24,7 +24,7 @@ model.login = function(){
 
     $.ajax({
         type: "POST",
-        url: "http://rssmailer/rest.php?name=getUser",
+        url: localStorage.getItem('services_url')+"?name=getUser",
         data: postData,
         dataType: "json",
         success: function (res) {
@@ -42,23 +42,4 @@ model.login = function(){
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
     });
-/*
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: localStorage.getItem("services_url") + "system/auth?token=0",
-        data: JSON.stringify(postData),
-        dataType: "json",
-        success: function (res) {
-            alert(res);
-            localStorage.setItem("token", res);
-            if (res == 401) {
-                
-            }
-            else {
-                window.location = "index.html";
-            }
-        }
-    });
-    */
 }
