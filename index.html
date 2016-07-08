@@ -63,6 +63,10 @@
 
     <!-- Menu Toggle Script -->
     <script>
+    if (document.cookie.indexOf("email") <0||document.cookie.indexOf("password") <0) {
+         window.location='login.html';
+    }
+
     rssmailer.util.startup.loadViews();
 
     $("#menu-toggle").click(function(e) {
