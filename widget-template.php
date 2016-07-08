@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-type: text/plain; charset=utf-8');
 ?>
-<link rel="Stylesheet" href="http://rssmailerweb/css/widget.css" />
+<link rel="Stylesheet" href="http://<?=$_SERVER['SERVER_NAME']?>/css/widget.css" />
 <div class="form">
         <input type="text" id="email" class="email" placeholder="Введите email" />
         <br />
@@ -11,7 +11,7 @@ header('Content-type: text/plain; charset=utf-8');
             <input type="button" id="btn_subscribe" onclick="btn_subscribe_click()" value="Подписаться" >
         </div>
         <div id='loadingmessage' style='display:none'>
-            <img src='http://rssmailerweb/images/ajax-loader.gif'/>
+            <img src='http://<?=$_SERVER['SERVER_NAME']?>/images/ajax-loader.gif'/>
         </div>
         <div id="widgetResult" class="result"></div>
     </div>
