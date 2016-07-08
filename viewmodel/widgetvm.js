@@ -41,6 +41,9 @@ model.loadWidgets = function(){
 }
 
 model.showWidget = function(){
+    var guid = this['guid'];
+    var html= "<div id='rssmailer-container' data-widget='"+guid+"'></div><script src='http://rssmailerweb/js/widget_loader.js' async></script>";
+    $('#txtWidgetHtml').val(html);
     $("#widgetModal").modal();
 }
 
