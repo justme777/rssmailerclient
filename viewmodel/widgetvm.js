@@ -42,7 +42,7 @@ model.loadWidgets = function(){
 
 model.showWidget = function(){
     var guid = this['guid'];
-    var html= "<div id='rssmailer-container' data-widget='"+guid+"'></div><script src='http://"+window.location.hostname+"/common.js'></script><script src='http://"+window.location.hostname+"/js/widget_loader.js'></script>";
+    var html= "<div id='rssmailer-container' data-widget='"+guid+"'></div><script src='http://"+window.location.hostname+"/config.js'></script><script src='http://"+window.location.hostname+"/js/widget_loader.js'></script>";
     $('#txtWidgetHtml').val(html);
     $("#widgetModal").modal();
 }
