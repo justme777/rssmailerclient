@@ -3,8 +3,8 @@
 getWidgetHtml(); 
 
 function getWidgetHtml(){
-    var domain_name =  window.location.hostname;
-    $.ajax({ url: 'http://'+domain_name+'/widget-template.php', success: function(data) { 
+    var domain_name =  "http://rssmailerweb/widget-template.php";
+    $.ajax({ url: domain_name, success: function(data) { 
         $('#rssmailer-container').html(data);
      } });
 }
@@ -18,7 +18,7 @@ function btn_subscribe_click(){
                 if(validateEmail(em)==true){
                     $.ajax({
                         type: "POST",
-                        url: localStorage.getItem("services_url")+"?name=createSubscription",
+                        url: "http;//rssmailer/rest.php?name=createSubscription",
                         data: {email:em, guid:g},
                         dataType: 'html',
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
