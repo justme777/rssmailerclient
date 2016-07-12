@@ -15,7 +15,7 @@
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-
+    <script src="/config.js" ></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -98,7 +98,7 @@
         
             $.ajax({
                     type: "POST",
-                    url: "http://rssmailer/rest.php?name=createUser",
+                    url: serverUrl+"?name=createUser",
                     data: { email:em, password:pass},
                     dataType: 'html',
                     error: function (XMLHttpRequest, textStatus, errorThrown) {

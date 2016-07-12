@@ -5,11 +5,11 @@ rssmailer.util.startup = rssmailer.util.startup || {};
 var model = rssmailer.util.startup;
 
 model.loadConfig = function(){
-    $.getJSON("config.json", function (json) {
+   /* $.getJSON("config.json", function (json) {
         $.each(json, function (k, v) {
             localStorage.setItem(k, v);
         });
-    });
+    });*/
 }
 
 model.loadViews=function(){
@@ -21,10 +21,10 @@ model.login = function(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     var postData = { 'email': email, 'password': password };
-
+    
     $.ajax({
         type: "POST",
-        url: localStorage.getItem('services_url')+"?name=getUser",
+        url: document.serverUrl+"?name=getUser",
         data: postData,
         dataType: "json",
         success: function (res) {

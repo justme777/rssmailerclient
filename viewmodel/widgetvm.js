@@ -11,7 +11,7 @@ model.createWidget = function(){
     
      $.ajax({
         type: "POST",
-        url: localStorage.getItem('services_url')+"?name=createWidget",
+        url: document.serverUrl+"?name=createWidget",
         data: { rss:r, userId:u},
         dataType: 'html',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -27,7 +27,7 @@ model.loadWidgets = function(){
     var postData = { 'userId': getCookie('userId') };
     $.ajax({
         type: "POST",
-        url: localStorage.getItem('services_url')+"?name=getWidgets",
+        url: document.serverUrl+"?name=getWidgets",
         data: postData,
       dataType: "json",
         success: function (res) {
@@ -42,7 +42,7 @@ model.loadWidgets = function(){
 
 model.showWidget = function(){
     var guid = this['guid'];
-    var html= "<div id='rssmailer-container' data-widget='"+guid+"'></div><script src='http://"+window.location.hostname+"/js/widget_loader.js' async></script>";
+    var html= "<div id='rssmailer-container' data-widget='"+guid+"'></div><script src='http://"+window.location.hostname+"/common.js'></script><script src='http://"+window.location.hostname+"/js/widget_loader.js'></script>";
     $('#txtWidgetHtml').val(html);
     $("#widgetModal").modal();
 }

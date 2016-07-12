@@ -3,7 +3,7 @@
 getWidgetHtml(); 
 
 function getWidgetHtml(){
-    var domain_name =  "http://rssmailer.esy.es/widget-template.php";
+    var domain_name =  document.clientUrl+"/widget-template.php";
     $.ajax({ url: domain_name, success: function(data) { 
         $('#rssmailer-container').html(data);
      } });
@@ -18,7 +18,7 @@ function btn_subscribe_click(){
                 if(validateEmail(em)==true){
                     $.ajax({
                         type: "POST",
-                        url: "http://smartdev.esy.es/rest.php?name=createSubscription",
+                        url: document.serverUrl+"?name=createSubscription",
                         data: {email:em, guid:g},
                         dataType: 'html',
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
