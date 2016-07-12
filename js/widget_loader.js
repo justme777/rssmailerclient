@@ -3,7 +3,8 @@
 getWidgetHtml(); 
 
 function getWidgetHtml(){
-    $.ajax({ url: 'http://rssmailerweb/widget-template.php', success: function(data) { 
+    var domain_name =  window.location.hostname;
+    $.ajax({ url: 'http://'+domain_name+'/widget-template.php', success: function(data) { 
         $('#rssmailer-container').html(data);
      } });
 }
