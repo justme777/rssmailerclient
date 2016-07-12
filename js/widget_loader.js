@@ -17,7 +17,7 @@ function btn_subscribe_click(){
                 if(validateEmail(em)==true){
                     $.ajax({
                         type: "POST",
-                        url: "http://rssmailer/rest.php?name=createSubscription",
+                        url: localStorage.getItem("services_url")+"?name=createSubscription",
                         data: {email:em, guid:g},
                         dataType: 'html',
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
