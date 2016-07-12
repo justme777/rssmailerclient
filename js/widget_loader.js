@@ -25,14 +25,15 @@ function btn_subscribe_click(){
                             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
                         },
                         success: function (result) {
-                            alert(result.d);
                             $('#loadingmessage').hide();
+                            $('#rssmailer-container .result').css('color','green');
                             $('#rssmailer-container .result').html(result);
                         }
                     });     
                 }else{
                     $('#loadingmessage').hide();
-                    $('#rssmailer-container .result').html("error");;
+                    $('#rssmailer-container .result').css('color','red');
+                    $('#rssmailer-container .result').html("Please, enter a valid address");;
                 } 
             }
             

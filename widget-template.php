@@ -7,7 +7,7 @@ header('Content-type: text/plain; charset=utf-8');
         <input type="text" id="email" class="email" placeholder="Введите email" />
         <br />
         <div style="height:36px;">
-        <a class="link" href="#">Настройки</a>
+        <!--<a class="link" href="#">Настройки</a>-->
             <input type="button" id="btn_subscribe" onclick="btn_subscribe_click()" value="Подписаться" >
         </div>
         <div id='loadingmessage' style='display:none'>
