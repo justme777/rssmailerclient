@@ -3,6 +3,11 @@ var model = rssmailer.vm.widget;
 
 model.widgets = ko.observableArray();
 
+model.settings_widgetId = ko.observable();
+model.settings_sender_name = ko.observable();
+model.settings_email = ko.observable();
+model.settings_password = ko.observable();
+
 model.createWidget = function(){
     var r = document.getElementById("txtRssLink").value;
     var u = getCookie('userId') ;
@@ -47,3 +52,32 @@ model.showWidget = function(){
     $("#widgetModal").modal();
 }
 
+model.showWidgetSettings = function(){
+    model.settings_widgetId = this['id'];
+    $('#widgetSettingsModal').modal();
+}
+
+model.create_widget_settings=function(){
+
+    var obj={};
+    obj.widgetId = model.settings_widgetId;
+    obj.email=model.settings_email();
+    obj.password=model.settings_password();
+    obj.sender_name = model.settings_sender_name();
+    
+    var postData = { 'widget_settings': obj };
+    $.ajax({
+        type: "POST",
+        url: document.serverUrl+"?name=createWidgetSettings",
+        data: postData,
+      dataType: "html",
+        success: function (res) {
+            alert(res);
+            $('#widgetSettingsModal').modal('hide');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+    });
+    
+}

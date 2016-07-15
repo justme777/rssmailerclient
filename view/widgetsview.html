@@ -13,10 +13,12 @@
             <td data-bind="text: id"></td>
             <td data-bind="text: rss, click: $parent.showWidget"></td>
             <td data-bind="text: guid"></td>
+            <td>Подписчики</td>
+            <td data-bind="click:$parent.showWidgetSettings">Настройки</td>
         </tr>
     </tbody>
 </table>
-<!-- Modal -->
+<!-- Create Widget Modal -->
   <div class="modal fade" id="widgetModal" role="dialog">
     <div class="modal-dialog">
     
@@ -33,6 +35,52 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Create Widget Settings Modal -->
+  <div class="modal fade" id="widgetSettingsModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Код виджета</h4>
+        </div>
+        <div class="modal-body">
+          <form id="create_widget_settings_form" data-toggle="validator" role="form" class="form-horizontal">
+            <div class="form-group">
+                <label for="txtSenderName" class="col-sm-2 control-label">Имя</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" data-bind="value:settings_sender_name" id="txtSenderName" placeholder="Имя отправителя" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtEmail" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" data-bind="value:settings_email" id="txtEmail" placeholder="example@mail.ru" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtPassword" class="col-sm-2 control-label">Пароль</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" data-bind="value:settings_password" id="txtPassword" placeholder="Введите пароль от электронной почты" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-12">
+                    <button id="btnCreateWidgetSettings" data-bind="click:create_widget_settings" type="button" class="btn btn-primary">Сохранить</button>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        
       </div>
       
     </div>
