@@ -106,6 +106,6 @@ model.create_widget_settings=function(){
 }
 
 model.create_letter = function(){
-    document.widgetId =this['id'];
+    document.widgetGuid =this['guid'];
     $("#mainview").load("/view/create_letter_view.html");
 }

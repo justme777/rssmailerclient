@@ -1,12 +1,39 @@
 rssmailer.vm.letter = rssmailer.vm.letter||{};
 var model = rssmailer.vm.letter;
 
-model.emails = ko.observable("smartdevkz@mail.ru,almasmyltykbayev@mail.ru");
+model.emails = ko.observable("");
 model.subject = ko.observable("Рассылка");
 model.html = ko.observable();
 
-model.loadWidgetSettings = function(widgetId){
-    
+model.getSubcribersAddress = function(){ 
+
+    if(document.getElementById('cbLoadEmails').checked) {
+        var postData = { 'guid': document.widgetGuid };
+        $.ajax({
+            type: "POST",
+            url: document.serverUrl+"?name=getSubcribersAddress",
+            data: postData,
+        dataType: "json",
+            success: function (res) {
+                model.displayEmails(res);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+        });    
+    } else {
+        $('#txtEmails').val('');
+        
+    }
+}
+
+model.displayEmails =function(emails){
+    var txt="";
+    for(var i=0;i<emails.length;i++){
+        if(txt!="")txt+=",";
+        txt+=emails[i].email;
+    }
+    $('#txtEmails').val(txt);
 }
 
 model.sendLetter = function(){

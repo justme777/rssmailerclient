@@ -2,6 +2,9 @@
   <fieldset class="form-group">
     <label for="txtEmails">Email адреса</label>
     <textarea class="form-control" data-bind="value:emails" id="txtEmails" rows="3"></textarea>
+    <div class="checkbox">
+        <label><input type="checkbox" id="cbLoadEmails" data-bind="click:getSubcribersAddress">Грузить email-ы подписчиков
+    </div>
   </fieldset>
    
    <fieldset class="form-group">
@@ -23,18 +26,20 @@
     </div>
     
     <fieldset class="form-group" style="float:right;margin-top:10px;">
-        <button data-bind="click: sendLetter" class="btn btn-primary">Submit</button>
+        <button data-bind="click: sendLetter" class="btn btn-primary">Отправить</button>
     </fieldset>
-    <fieldset class="form-group" style="float:right;margin-top:10px;">
-        <button data-bind="click: generateNewsText" class="btn btn-success">Generate</button>
+    <fieldset class="form-group" style="float:right;margin-top:10px;margin-right:10px;">
+        <button data-bind="click: generateNewsText" class="btn btn-default">Сгенерировать контент</button>
     </fieldset>
 </div>
 
 <script>
+
     function showHTML(){
         $('#txtHtml').css('display','block');
         $('#txtText').css('display','none');
     }
+
     function showText(){
         var html = $('#txtHtml').val();
         $('#txtText').css('display','block');
@@ -43,8 +48,7 @@
     }
 </script>
 
-<script src="/viewmodel/lettervm.js">
-</script>
+<script src="/viewmodel/lettervm.js"></script>
 <script>
     ko.applyBindings(rssmailer.vm.letter, document.getElementById("create_letter_form"));
 </script>
