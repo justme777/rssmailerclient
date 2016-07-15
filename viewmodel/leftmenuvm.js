@@ -7,5 +7,8 @@ model.showCreateWidgetView = function(){
 
 model.showWidgetsView = function(){
     $("#mainview").load("/view/widgetsview.html");
-    
+}
+
+model.showCreateLetterView = function(){
+    $("#mainview").load("/view/create_letter_view.html");
 }

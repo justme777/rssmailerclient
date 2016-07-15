@@ -1,0 +1,50 @@
+﻿<div id="create_letter_form">
+  <fieldset class="form-group">
+    <label for="txtEmails">Email адреса</label>
+    <textarea class="form-control" data-bind="value:emails" id="txtEmails" rows="3"></textarea>
+  </fieldset>
+   
+   <fieldset class="form-group">
+    <label for="txtSubject">Тема</label>
+    <input type="text" data-bind="value:subject" class="form-control" id="txtSubject" placeholder="Введите тему письма" />
+  </fieldset>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" onclick="showHTML()" href="#">HTML</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" onclick="showText()" href="#">Текст</a>
+        </li>
+    </ul>  
+    <div style="margin-top:4px;">
+        <textarea class="form-control" data-bind="value:html" id="txtHtml" rows="16"></textarea> 
+        <div class="form-control displayNone"  id="txtText" style="height:450px;overflow-y:auto;" >Text</div>
+    </div>
+    
+    <fieldset class="form-group" style="float:right;margin-top:10px;">
+        <button data-bind="click: sendLetter" class="btn btn-primary">Submit</button>
+    </fieldset>
+    <fieldset class="form-group" style="float:right;margin-top:10px;">
+        <button data-bind="click: generateNewsText" class="btn btn-success">Generate</button>
+    </fieldset>
+</div>
+
+<script>
+    function showHTML(){
+        $('#txtHtml').css('display','block');
+        $('#txtText').css('display','none');
+    }
+    function showText(){
+        var html = $('#txtHtml').val();
+        $('#txtText').css('display','block');
+        $('#txtText').html(html);
+        $('#txtHtml').css('display','none');
+    }
+</script>
+
+<script src="/viewmodel/lettervm.js">
+</script>
+<script>
+    ko.applyBindings(rssmailer.vm.letter, document.getElementById("create_letter_form"));
+</script>
