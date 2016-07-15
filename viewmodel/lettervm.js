@@ -5,6 +5,10 @@ model.emails = ko.observable("smartdevkz@mail.ru,almasmyltykbayev@mail.ru");
 model.subject = ko.observable("Рассылка");
 model.html = ko.observable();
 
+model.loadWidgetSettings = function(widgetId){
+    
+}
+
 model.sendLetter = function(){
     var receivers = model.emails().split(",");
     var sub =model.subject();

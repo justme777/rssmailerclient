@@ -3,7 +3,8 @@ var model = rssmailer.vm.widget;
 
 model.widgets = ko.observableArray();
 
-model.settings_widgetId = ko.observable();
+model.settings_Id;
+model.settings_widgetId;
 model.settings_sender_name = ko.observable();
 model.settings_email = ko.observable();
 model.settings_password = ko.observable();
@@ -52,27 +53,49 @@ model.showWidget = function(){
     $("#widgetModal").modal();
 }
 
+model.loadWidgetSettings = function(){
+    var postData = { 'widgetId': model.settings_widgetId };
+    $.ajax({
+        type: "POST",
+        url: document.serverUrl+"?name=getWidgetSettings",
+        data: postData,
+      dataType: "json",
+        success: function (res) {
+            model.settings_Id = res['id'];
+            model.settings_sender_name(res['sender_name']);
+            model.settings_email(res['email']);
+            model.settings_password(res['password']);
+            
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+    });
+    
+}
+
 model.showWidgetSettings = function(){
     model.settings_widgetId = this['id'];
+    model.loadWidgetSettings();
     $('#widgetSettingsModal').modal();
+
 }
 
 model.create_widget_settings=function(){
-
     var obj={};
-    obj.widgetId = model.settings_widgetId;
+    obj.widgetId=model.settings_widgetId;
     obj.email=model.settings_email();
     obj.password=model.settings_password();
     obj.sender_name = model.settings_sender_name();
-    
+    var functionName = "createWidgetSettings";
+    if(model.settings_Id>0){ functionName="updateWidgetSettings"; }
     var postData = { 'widget_settings': obj };
     $.ajax({
         type: "POST",
-        url: document.serverUrl+"?name=createWidgetSettings",
+        url: document.serverUrl+"?name="+functionName,
         data: postData,
       dataType: "html",
         success: function (res) {
-            alert(res);
             $('#widgetSettingsModal').modal('hide');
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -80,4 +103,9 @@ model.create_widget_settings=function(){
         },
     });
     
+}
+
+model.create_letter = function(){
+    document.widgetId =this['id'];
+    $("#mainview").load("/view/create_letter_view.html");
 }
