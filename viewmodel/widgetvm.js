@@ -109,3 +109,28 @@ model.create_letter = function(){
     document.widgetGuid =this['guid'];
     $("#mainview").load("/view/create_letter_view.html");
 }
+
+model.showNewsContent = function(){
+    var widgetId = this['id'];
+    var url = this['rss'];
+    $.ajax({ 
+        type: "POST",
+        url: document.serverUrl+"?name=getHtmlFromRss",
+        data: { rss:url },
+        dataType: 'html',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            $( ".newsfeed_item" ).each(function(index){
+                var id =$(this).text(); 
+                if(id==widgetId){
+                    $(this).html(result);
+                    $(this).css('margin-top','0px'); 
+                    $(this).css('height','auto');        
+                }
+            });   
+        }
+    });    
+    
+}

@@ -12,3 +12,7 @@ model.showWidgetsView = function(){
 model.showCreateLetterView = function(){
     $("#mainview").load("/view/create_letter_view.html");
 }
+
+model.showNewFeedView = function(){
+    $("#mainview").load("/view/news_feed_view.html");
+}

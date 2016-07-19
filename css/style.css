@@ -1,3 +1,11 @@
 .displayNone{
     display: none;
 }
+
+#div_newsfeed{
+    margin-top:10px;
+}
+
+.newsfeed_item{
+    margin-top:-35px;
+}

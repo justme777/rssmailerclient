@@ -63,7 +63,7 @@ model.generateNewsText = function(){
     var url="http://kazakh-tv.kz/rss-ru.xml";
     $.ajax({
             type: "POST",
-            url: document.serverUrl+"?name=getNewsHtmlFromRSS",
+            url: document.serverUrl+"?name=getHtmlFromRssByDate",
             data: { date:today, rss:url },
             dataType: 'html',
             error: function (XMLHttpRequest, textStatus, errorThrown) {

@@ -1,0 +1,15 @@
+<div id="div_newsfeed">
+    <div class="list-group" data-bind="foreach: widgets">
+        <a href="#" class="list-group-item" data-bind="text: rss, click:$parent.showNewsContent"></a>
+        <div class="form-control newsfeed_item" data-bind="text:id">Text</div>
+    </div>
+</div>
+
+<script src="/viewmodel/widgetvm.js"></script>
+
+<script>
+    
+
+    ko.applyBindings(rssmailer.vm.widget, document.getElementById("div_newsfeed"));
+    rssmailer.vm.widget.loadWidgets();
+</script>
